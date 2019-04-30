@@ -1,10 +1,10 @@
 <?php
 include('header.php');
-include('post.php');
-?>
+include('Post.php');
+include('Tag.php');
 
-<?php
 $post = new Post($db);
+$tags = new Tag($db);
 ?>
 <div class="container">
     <div class="row">
@@ -23,8 +23,16 @@ $post = new Post($db);
                 </div>
             </div>
         <?php } ?>
-            
         </div>
+
+        <div class="col-md-4">
+            <h4>Recherche par tags</h4>
+            <p><?php
+                foreach($tags->getAllTags() as $tag) { ?>
+                    <a href="index.php?tag=<?=$tag['tag']?>"><button class="btn btn-outline-danger btn-sm"><?=$tag['tag']?></button></a>
+            <?php } ?></p>
+        </div>
+
     </div>
 </div>
 <style type="text/css">

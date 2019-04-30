@@ -1,7 +1,11 @@
 <?php include('header.php'); ?>
-<?php include('post.php'); ?>
+<?php include('Post.php'); ?>
+<?php include('Tag.php'); ?>
 <?php include('functions/functions.php'); ?>
-<?php $post = new Post($db);
+
+<?php 
+$post = new Post($db);
+$tags = new Tag($db);
 if (isset($_POST['btnSubmit'])) {
     $date = date('Y-m-d');
     if (!empty($_POST['title']) && !empty($_POST['description'])) {
@@ -51,6 +55,14 @@ if (isset($_POST['btnSubmit'])) {
                             <label for="image">Image</label>
                             <input type="file" name="image" class="form-control">
                         </div>
+
+                        <div class="form-group form-check-inline">
+                            <label for="tags{]"><b>Tags</b></label>
+                            <?php foreach($tags->getAllTags() as $tag) { ?>
+                            <input type="checkbox" name="tags[]" class="form-check-input" value="<?=$tag['id']?>"><?=$tag['tag']?>
+                            <?php } ?>
+                        </div>
+
                         <div class="form-group">
                             <button type="submit" name="btnSubmit" class="btn btn-danger">Enregistrer</button>
                         </div>
