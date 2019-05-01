@@ -30,7 +30,7 @@
         <a class="nav-link" href="add.php">Ajouter Post</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Back Office</a>
+        <a class="nav-link" href="result.php">Back Office</a>
       </li>
     </ul>
   </div>

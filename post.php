@@ -24,7 +24,22 @@ class Post {
         return $result;
     }
 
+    public function search($keyword) {
+        $sql = "SELECT * FROM posts
+                WHERE title LIKE '%{$keyword}%'
+                OR description LIKE '%{$keyword}%'";
+        $result = mysqli_query($this->db, $sql);
+        return $result;
+    }
+
     public function getPost() {
+        // By search
+        if (isset($_GET['keyword'])) {
+            $keyword = $_GET['keyword'];
+            return $this->search($keyword);
+        }
+
+        // By tag
         if (isset($_GET['tag'])) {
             $tag = $_GET['tag'];
             $sql = "SELECT * FROM posts 
@@ -44,4 +59,23 @@ class Post {
         return $result;        
     }
 
+    public function updatePost($title, $description, $slug) {
+        $newImage = $_FILES['image']['name'];
+        if (!empty($newImage)) {
+            $image = uploadImage();
+            $sql = "UPDATE posts SET title = '$title', description = '$description', image = '$image' WHERE slug = '$slug'";
+            $result = mysqli_query($this->db, $sql);
+            return $result;        
+        } else {
+            $sql = "UPDATE posts SET title = '$title', description = '$description' WHERE slug = '$slug'";
+            $result = mysqli_query($this->db, $sql);
+            return $result; 
+        }
+    }
+
+    public function deletePostBySlug($slug) {
+        $sql = "DELETE FROM posts WHERE slug='$slug'";
+        $result = mysqli_query($this->db, $sql);
+        return $result; 
+    }
 }
