@@ -1,0 +1,28 @@
+<?php include('header.php'); 
+include('Account.php');
+
+$user = new Account($db);
+if (isset($_POST['btnLogin'])) {
+    $user->login($_POST['username'], md5($_POST['password']));
+}
+?>
+
+<form action="login.php" method="POST">
+    <div class="container">
+        <h4>Admin Login</h4>
+        <div class="col-md-4">
+            <div class="form-group">	
+                <label for="username">Pseudo</label>
+                <input type="text" name="username" class="form-control">
+            </div>
+            <div class="form-group">	
+                <label for="password">Mot de passe</label>
+                <input type="text" name="password" class="form-control">
+            </div>
+            <div class="form-group">	
+                <button type="submit" name="btnLogin" class="btn btn-danger">connexion</button>
+            </div>
+
+        </div>
+    </div>
+</form>

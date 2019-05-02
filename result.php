@@ -1,10 +1,20 @@
-<?php include('header.php'); 
+<?php 
+include('Session.php');
+include('header.php'); 
 include('Post.php');
 $post = new Post($db);
 ?>
 
 <div class="container">
     <h2>Posts</h2>
+    <?php
+        if (!empty($_SESSION['username'])) {
+            echo "Bonjour, {$_SESSION['username']}";
+        } else {
+            echo "Vous n'êtes pas connecté";
+        }
+    
+    ?>
     <table class="table table-striped">
         <thead>
             <tr>
