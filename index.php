@@ -1,8 +1,8 @@
 <?php
+include('Session.php');
 include('header.php');
 include('Post.php');
 include('Tag.php');
-
 $post = new Post($db);
 $tags = new Tag($db);
 ?>

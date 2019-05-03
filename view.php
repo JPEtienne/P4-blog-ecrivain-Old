@@ -20,10 +20,12 @@ $comments = new Comment($db);
         </div>
     </div>
     <?php } ?>
-    <h4>Commentaires</h4>
+    <h4>Commentaires (<?=$comments->countComments($_GET['slug'])?>)</h4>
     <?php if(isset($_POST['btnComment'])) {
+        $date = date('Y-m-d');
+        $status = 0;
         if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['subject']) && !empty($_POST['description'])) {
-            $result = $comments->comment(st($_POST['name']), st($_POST['email']), st($_POST['subject']), st($_POST['description']), st($_GET['slug']));
+            $result = $comments->comment(st($_POST['name']), st($_POST['email']), st($_POST['subject']), st($_POST['description']), st($_GET['slug']), $date, $status);
             if ($result == true) {
                 echo '<div class="text-center alert alert-success">Commentaire ajouté</div>';
             }
@@ -58,11 +60,9 @@ $comments = new Comment($db);
 
     <?php foreach($comments->getComment($_GET['slug']) as $comment) { ?>
      <div class="media">
-        <div class="media-left media-top">
-            <img src="images/accelrys.png" alt="9gag" class="media-object" style="width:100px;">
-        </div>
         <div class="media-body">
             <strong><?=$comment['name']?></strong>
+            <p><?=date('d/m/Y', strtotime($comment['created_at']));?> <a href="manageComment.php?signal=<?=$comment['id']?>&slug=<?=$comment['slug']?>"><i class="fas fa-exclamation-triangle"></i></a></p>
             <p><?=$comment['description']?></p>
         </div>
     </div>

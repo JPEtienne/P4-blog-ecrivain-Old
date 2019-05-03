@@ -9,7 +9,7 @@ if (isset($_POST['btnLogin'])) {
 
 <form action="login.php" method="POST">
     <div class="container">
-        <h4>Admin Login</h4>
+        <h4>Login</h4>
         <div class="col-md-4">
             <div class="form-group">	
                 <label for="username">Pseudo</label>
