@@ -1,4 +1,5 @@
 <?php
+include('Session.php');
 include('header.php');
 include('post.php');
 include('Comment.php');
@@ -23,9 +24,9 @@ $comments = new Comment($db);
     <h4>Commentaires (<?=$comments->countComments($_GET['slug'])?>)</h4>
     <?php if(isset($_POST['btnComment'])) {
         $date = date('Y-m-d');
-        $status = 0;
-        if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['subject']) && !empty($_POST['description'])) {
-            $result = $comments->comment(st($_POST['name']), st($_POST['email']), st($_POST['subject']), st($_POST['description']), st($_GET['slug']), $date, $status);
+        $status = 1;
+        if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['description'])) {
+            $result = $comments->comment(st($_POST['name']), st($_POST['email']), st($_POST['description']), st($_GET['slug']), $date, $status);
             if ($result == true) {
                 echo '<div class="text-center alert alert-success">Commentaire ajouté</div>';
             }
@@ -43,10 +44,6 @@ $comments = new Comment($db);
             <div class="form-group">
                 <label for="email">E-mail</label>
                 <input type="email" name="email" class="form-control">
-            </div>
-            <div class="form-group">
-                <label for="subject">Sujet</label>
-                <input type="text" name="subject" class="form-control">
             </div>
             <div class="form-group">
                 <label for="description">Commentaire</label>

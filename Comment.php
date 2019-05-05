@@ -8,8 +8,8 @@ class Comment {
         $this->db = $db;
     }
 
-    public function comment($name, $email, $subject, $description, $slug, $created, $status) {
-        $sql = "INSERT INTO comments(name, email, subject, description, slug, created_at, status) VALUES('$name', '$email', '$subject', '$description', '$slug', '$created', '$status')";
+    public function comment($name, $email, $description, $slug, $created, $status) {
+        $sql = "INSERT INTO comments(name, email, description, slug, created_at, status) VALUES('$name', '$email', '$description', '$slug', '$created', '$status')";
         $result = mysqli_query($this->db, $sql);
         return $result;
     }

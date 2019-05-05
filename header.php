@@ -25,7 +25,7 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav ml-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="index.php">Accueil <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="index.php?page=1">Accueil <span class="sr-only">(current)</span></a>
       </li>
       <?php if (!empty($_SESSION['username'])) { ?>
       <li class="nav-item">
