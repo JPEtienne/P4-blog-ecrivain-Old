@@ -1,6 +1,6 @@
-<?php include('header.php'); 
-include('Post.php');
-include('functions/functions.php');
+<?php 
+include('../../functions/include_views.php');
+include('../common/header.php');
 
 $posts = new Post($db);
 

@@ -1,5 +1,6 @@
-<?php include('header.php'); 
-include('Account.php');
+<?php 
+include('../../functions/include_login.php');
+include('../common/header.php');
 
 $user = new Account($db);
 if (isset($_POST['btnLogin'])) {

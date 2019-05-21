@@ -1,9 +1,8 @@
 <?php 
-include('Session.php');
-include('header.php'); 
-include('Post.php');
-include('Comment.php');
-$post = new Post($db);
+include('../../functions/include_views.php');
+include('../common/header.php');
+
+$posts = new Post($db);
 $comment = new Comment($db);
 ?>
 
@@ -17,6 +16,21 @@ $comment = new Comment($db);
         }
     
     ?>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="add.php">Ajouter un post <span class="sr-only"></span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="my-about.php">Mes informations <span class="sr-only"></span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="my-tags.php">Tags <span class="sr-only"></span></a>
+            </li>
+            
+        </ul>
+    </nav>
+
     <table class="table table-striped">
         <thead>
             <tr>
@@ -27,7 +41,7 @@ $comment = new Comment($db);
             </tr>
         </thead>
         <tbody>
-            <?php foreach($post->getPost() as $post) { ?>
+            <?php foreach($posts->getPost() as $post) { ?>
             <tr>
                 <td><?=$post['title']?></td>
                 <td><?=substr($post['description'], 0, 20)?></td>
@@ -47,6 +61,24 @@ $comment = new Comment($db);
             <?php } ?>
         </tbody>
     </table>
+
+    <?php if (isset($_GET['page'])) { ?>
+        <ul class="pagination">
+            <?php $row = $posts->countPostPages()[0];
+            $totalPages = ceil($row/4); ?>
+            <li class="page-item" style="<?= $_GET['page'] <= 1 ?'display:none;':'';?>"><a class="page-link" href="result.php?page=1"><i class="fas fa-angle-double-left"></i></a></li>
+            <li class="page-item" style="<?= $_GET['page'] <= 1 ?'display:none;':'';?>"><a class="page-link" href="result.php?page=<?=$_GET['page']-1?>"><i class="fas fa-chevron-left"></i></a></li>
+            <?php for ($i = 1; $i <= $totalPages; $i++) { ?>
+                <li class="page-item <?= $i != $_GET['page'] ?: 'active';?>" style="<?php if (($i >= ($_GET['page']+4)) || ($i <= ($_GET['page']-4))) {echo 'display:none;';}?>">
+                    <a class="page-link" href="result.php?page=<?=$i?>"><?=$i?></a>
+                </li>
+            <?php } ?>
+            <li class="page-item" style="<?= $_GET['page'] >= $totalPages ?'display:none;':'';?>"><a class="page-link" href="result.php?page=<?=$_GET['page']+1?>"><i class="fas fa-chevron-right"></i></a></li>
+            <li class="page-item" style="<?= $_GET['page'] >= $totalPages ?'display:none;':'';?>"><a class="page-link" href="result.php?page=<?=$totalPages?>"><i class="fas fa-angle-double-right"></i></a></li>                    
+        </ul> 
+    <?php } ?>  
+
+    
 
     <h2>Commentaires signalés</h2>
     <table class="table table-striped">

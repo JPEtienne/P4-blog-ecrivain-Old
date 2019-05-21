@@ -1,9 +1,7 @@
 <?php
-include('Session.php');
-include('header.php');
-include('post.php');
-include('Comment.php');
-include('functions/functions.php');
+include('../../functions/functions.php');
+include('../common/header.php');
+include('../../functions/include_views.php');
 
 $posts = new Post($db);
 $comments = new Comment($db);
@@ -13,7 +11,7 @@ $comments = new Comment($db);
     <div class="row">
         <?php foreach($posts->getSinglePost($_GET['slug']) as $posts) { ?>
         <div class="card">
-            <img src="images/<?=$posts['image'];?>" class="card-img-top">
+            <img src="../../images/<?=$posts['image'];?>" class="card-img-top">
         </div>
         <div class="card-body">
             <h4 class="card-title"><?=$posts['title'];?></h4>

@@ -1,5 +1,7 @@
 <?php
-include('Db.php');
+
+
+
 class Post {
 
     private $db;

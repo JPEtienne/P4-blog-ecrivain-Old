@@ -1,8 +1,7 @@
-<?php include('Session.php'); ?>
-<?php include('header.php'); ?>
-<?php include('Post.php'); ?>
-<?php include('Tag.php'); ?>
-<?php include('functions/functions.php'); ?>
+<?php 
+include('../../functions/include_views.php'); 
+include('../common/header.php');
+?>
 
 <?php 
 $post = new Post($db);
