@@ -1,0 +1,33 @@
+Options +FollowSymLinks
+RewriteEngine on
+Rewriterule ^about$ view/front/about.php
+Rewriterule ^home-(.*)$ view/front/index.php?page=$1
+Rewriterule ^search-(.*)$ view/front/index.php?keyword=$1
+Rewriterule ^tag-(.*)$ view/front/index.php?tag=$1
+Rewriterule ^post-(.*)$ view/front/view.php?slug=$1
+Rewriterule ^login$ view/back/login.php
+Rewriterule ^image-(.*)$ images/$1
+
+Rewriterule ^office-(.*)$ view/back/result.php?page=$1
+Rewriterule ^add-post$ view/back/add.php
+Rewriterule ^my-information$ view/back/my-about.php
+Rewriterule ^my-tags$ view/back/my-tags.php
+Rewriterule ^add-tag$ view/back/add-tag.php
+Rewriterule ^edit-post-(.*)$ view/back/edit.php?slug=$1
+Rewriterule ^delete-(.*)$ delete.php?slug=$1
+Rewriterule ^validate-comment-(.*)$ manageComment.php?validate=$1
+Rewriterule ^disable-comment-(.*)$ manageComment.php?disable=$1
+Rewriterule ^comment-delete-(.*)$ manageComment.php?delete=$1
+Rewriterule ^suppr-tag-(.*)$ manageTag.php?delete=$1
+Rewriterule ^new-tag$ manageTag.php?add=tag
+
+
+
+
+
+
+
+Rewriterule ^logout$ logout.php
+
+
+

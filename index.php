@@ -1,3 +1,8 @@
 <?php
 
-header('Location:view/front/index.php?page=1');
+if (isset($_GET['keyword'])) {
+    header('Location:search-'.$_GET['keyword']);
+    
+} else {
+    header('Location:home-1');
+}

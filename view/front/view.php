@@ -11,7 +11,7 @@ $comments = new Comment($db);
     <div class="row">
         <?php foreach($posts->getSinglePost($_GET['slug']) as $posts) { ?>
         <div class="card">
-            <img src="../../images/<?=$posts['image'];?>" class="card-img-top">
+            <img src="image-<?=$posts['image'];?>" class="card-img-top">
         </div>
         <div class="card-body">
             <h4 class="card-title"><?=$posts['title'];?></h4>

@@ -9,11 +9,11 @@ $tags = new Tag($db);
     <nav>
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="my-tags.php">Tag <span class="sr-only"></span></a>
+                <a class="nav-link" href="my-tags">Tag <span class="sr-only"></span></a>
             </li>
         </ul>
     </nav>
-    <form action="manageTag.php?add=tag" method="POST">
+    <form action="new-tag" method="POST">
         <div class="card">
             <div class="card-header">Ajouter un tag</div>
             <div class="card-body">

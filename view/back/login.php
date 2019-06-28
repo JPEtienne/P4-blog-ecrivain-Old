@@ -8,7 +8,7 @@ if (isset($_POST['btnLogin'])) {
 }
 ?>
 
-<form action="login.php" method="POST">
+<form action="login" method="POST">
     <div class="container">
         <h4>Login</h4>
         <div class="col-md-4">

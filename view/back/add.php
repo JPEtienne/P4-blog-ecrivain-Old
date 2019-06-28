@@ -1,5 +1,6 @@
 <?php 
 include('../../functions/include_views.php'); 
+include('../../functions/functions.php');
 include('../common/header.php');
 ?>
 
@@ -37,7 +38,7 @@ if (isset($_POST['btnSubmit'])) {
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <form action="add.php" method="POST" enctype="multipart/form-data">
+            <form action="add-post" method="POST" enctype="multipart/form-data">
                 <div class="card">
                     <div class="card-header">Ajouter un post</div>
                     <div class="card-body">

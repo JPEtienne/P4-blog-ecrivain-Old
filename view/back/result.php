@@ -19,13 +19,13 @@ $comment = new Comment($db);
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="add.php">Ajouter un post <span class="sr-only"></span></a>
+                <a class="nav-link" href="add-post">Ajouter un post <span class="sr-only"></span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="my-about.php">Mes informations <span class="sr-only"></span></a>
+                <a class="nav-link" href="my-information">Mes informations <span class="sr-only"></span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="my-tags.php">Tags <span class="sr-only"></span></a>
+                <a class="nav-link" href="my-tags">Tags <span class="sr-only"></span></a>
             </li>
             
         </ul>
@@ -47,13 +47,13 @@ $comment = new Comment($db);
                 <td><?=substr($post['description'], 0, 20)?></td>
                 <td><?=date('d/m/Y', strtotime($post['created_at']));?></td>
                 <td>
-                    <a href="view.php?slug=<?=$post['slug']?>">
+                    <a href="post-<?=$post['slug']?>">
                         <button type="submit" class="btn btn-danger btn-sm">Voir</button>
                     </a>
-                    <a href="edit.php?slug=<?=$post['slug']?>">
+                    <a href="edit-post-<?=$post['slug']?>">
                         <button type="submit" class="btn btn-danger btn-sm">Éditer</button>
                     </a>
-                    <a href="delete.php?slug=<?=$post['slug']?>">
+                    <a href="delete-<?=$post['slug']?>">
                         <button type="submit" class="btn btn-dark btn-sm">Supprimer</button>
                     </a>
                 </td>
@@ -66,15 +66,15 @@ $comment = new Comment($db);
         <ul class="pagination">
             <?php $row = $posts->countPostPages()[0];
             $totalPages = ceil($row/4); ?>
-            <li class="page-item" style="<?= $_GET['page'] <= 1 ?'display:none;':'';?>"><a class="page-link" href="result.php?page=1"><i class="fas fa-angle-double-left"></i></a></li>
-            <li class="page-item" style="<?= $_GET['page'] <= 1 ?'display:none;':'';?>"><a class="page-link" href="result.php?page=<?=$_GET['page']-1?>"><i class="fas fa-chevron-left"></i></a></li>
+            <li class="page-item" style="<?= $_GET['page'] <= 1 ?'display:none;':'';?>"><a class="page-link" href="office-1"><i class="fas fa-angle-double-left"></i></a></li>
+            <li class="page-item" style="<?= $_GET['page'] <= 1 ?'display:none;':'';?>"><a class="page-link" href="office-<?=$_GET['page']-1?>"><i class="fas fa-chevron-left"></i></a></li>
             <?php for ($i = 1; $i <= $totalPages; $i++) { ?>
                 <li class="page-item <?= $i != $_GET['page'] ?: 'active';?>" style="<?php if (($i >= ($_GET['page']+4)) || ($i <= ($_GET['page']-4))) {echo 'display:none;';}?>">
-                    <a class="page-link" href="result.php?page=<?=$i?>"><?=$i?></a>
+                    <a class="page-link" href="office-<?=$i?>"><?=$i?></a>
                 </li>
             <?php } ?>
-            <li class="page-item" style="<?= $_GET['page'] >= $totalPages ?'display:none;':'';?>"><a class="page-link" href="result.php?page=<?=$_GET['page']+1?>"><i class="fas fa-chevron-right"></i></a></li>
-            <li class="page-item" style="<?= $_GET['page'] >= $totalPages ?'display:none;':'';?>"><a class="page-link" href="result.php?page=<?=$totalPages?>"><i class="fas fa-angle-double-right"></i></a></li>                    
+            <li class="page-item" style="<?= $_GET['page'] >= $totalPages ?'display:none;':'';?>"><a class="page-link" href="office-<?=$_GET['page']+1?>"><i class="fas fa-chevron-right"></i></a></li>
+            <li class="page-item" style="<?= $_GET['page'] >= $totalPages ?'display:none;':'';?>"><a class="page-link" href="office-<?=$totalPages?>"><i class="fas fa-angle-double-right"></i></a></li>                    
         </ul> 
     <?php } ?>  
 
@@ -99,16 +99,16 @@ $comment = new Comment($db);
                 <td><?=substr($comment['description'], 0, 20)?></td>
                 <td><?=date('d/m/Y', strtotime($post['created_at']));?></td>
                 <td>
-                    <a href="view.php?slug=<?=$comment['slug']?>">
+                    <a href="post-<?=$comment['slug']?>">
                         <button type="submit" class="btn btn-danger btn-sm">Voir</button>
                     </a>
-                    <a href="manageComment.php?validate='<?=$comment['id']?>'">
+                    <a href="validate-comment-'<?=$comment['id']?>'">
                         <button type="submit" class="btn btn-danger btn-sm">Valider</button>
                     </a>
-                    <a href="manageComment.php?disable='<?=$comment['id']?>'">
+                    <a href="disable-comment-'<?=$comment['id']?>'">
                         <button type="submit" class="btn btn-danger btn-sm">Désactiver</button>
                     </a>
-                    <a href="manageComment.php?delete='<?=$comment['id']?>'">
+                    <a href="comment-delete-'<?=$comment['id']?>'">
                         <button type="submit" class="btn btn-dark btn-sm">Supprimer</button>
                     </a>
                 </td>

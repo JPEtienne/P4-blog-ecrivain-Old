@@ -6,7 +6,7 @@ function uploadImage() {
     $allowed = array('jpeg','png','jpg');
     $ext = pathinfo($imageName, PATHINFO_EXTENSION);
     if (in_array($ext, $allowed)) {
-        move_uploaded_file($imageTmp, 'images/'.$imageName);
+        move_uploaded_file($imageTmp, '../../images/'.$imageName);
     } else {
         echo 'Fromat de d\'image seulement en jpg, jpeg et png';
     }

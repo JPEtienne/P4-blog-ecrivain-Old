@@ -13,7 +13,7 @@ class Account {
         $result = mysqli_query($this->db, $sql);
         if (mysqli_num_rows($result) > 0) {
             $_SESSION['username'] = $_POST['username'];
-            header("location:result.php?page=1");
+            header("location:office-1");
         }
     }
 }

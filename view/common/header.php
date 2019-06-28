@@ -20,24 +20,24 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
 <div class="container">
-  <a class="navbar-brand" href="../front/index.php?page=1">Blog P4</a>
+  <a class="navbar-brand" href="home-1">Blog P4</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav ml-auto">
       <li class="nav-item <?=$_SERVER['SCRIPT_NAME'] == '/P4/index.php'?'active':'' ?>">
-        <a class="nav-link" href="../front/index.php?page=1">Accueil <span class="sr-only"></span></a>
+        <a class="nav-link" href="home-1">Accueil <span class="sr-only"></span></a>
       </li>
       <li class="nav-item <?=$_SERVER['SCRIPT_NAME'] == '/P4/about.php'?'active':'' ?>">
-        <a class="nav-link" href="../front/about.php">À propos <span class="sr-only"></span></a>
+        <a class="nav-link" href="about">À propos <span class="sr-only"></span></a>
       </li>
       <?php if (!empty($_SESSION['username'])) { ?>
       <li class="nav-item <?=$_SERVER['SCRIPT_NAME'] == '/P4/result.php'?'active':'' ?>">
-        <a class="nav-link" href="../back/result.php?page=1">Back Office</a>
+        <a class="nav-link" href="office-1">Back Office</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="../../logout.php">Déconnexion</a>
+        <a class="nav-link" href="logout">Déconnexion</a>
       </li>
       <?php } ?>
     </ul>

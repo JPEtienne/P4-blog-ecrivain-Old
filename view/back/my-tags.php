@@ -11,7 +11,7 @@ $tags = new Tag($db);
     <nav>
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="add-tag.php">Ajouter un tag <span class="sr-only"></span></a>
+                <a class="nav-link" href="add-tag">Ajouter un tag <span class="sr-only"></span></a>
             </li>
         </ul>
     </nav>
@@ -28,7 +28,7 @@ $tags = new Tag($db);
         <tr>
             <td><?=$tag['tag']?></td>
             <td>
-                <a href="manageTag.php?delete=<?=$tag['id']?>">
+                <a href="suppr-tag-<?=$tag['id']?>">
                     <button type="submit" class="btn btn-danger btn-sm">Supprimer</button>
                 </a>
             </td>

@@ -4,5 +4,5 @@ if (($_SERVER['SCRIPT_NAME'] == '/P4/view/front/index.php') || $_SERVER['SCRIPT_
     return;
     
 } elseif (empty($_SESSION['username'])) {
-    header("location: ../back/login.php");
+    header("location:login");
 }
