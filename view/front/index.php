@@ -12,10 +12,10 @@ $tags = new Tag($db);
             echo '<p>Recerhce pour: <i>'.$_GET['keyword'].'</i></p>';
         } ?>
         <?php foreach($posts->getPost() as $post) { ?>
-            <div class="media">
+            <div class="media front-post">
                 <div class="media-left media-top">
-                    <img src="image-<?= $post['image'];?>" alt="9gag" class="media-object" style="width:200px;"><br>
-                    Ajout: <?=date('d/m/Y', strtotime($post['created_at']));?></p>
+                    <img src="image-<?= $post['image'];?>" alt="9gag" class="media-object" style="width:200px;height:200px;"><br>
+                    Ajout: <?=date('d/m/Y', strtotime($post['created_at']));?>
                     
                 </div>
                 <div class="media-body">
@@ -41,11 +41,11 @@ $tags = new Tag($db);
             <?php } ?>   
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-4 side-menu">
             <h4>Recherche par tags</h4>
             <p>
                 <?php foreach($tags->getAllTags() as $tag) { ?>
-                    <a href="tag-<?=$tag['tag']?>"><button class="btn btn-outline-danger btn-sm"><?=$tag['tag']?></button></a>
+                    <a href="tag-<?=$tag['tag']?>"><button class="btn btn-sm btn-tag"><?=$tag['tag']?></button></a>
                 <?php } ?>
             </p>
             <p>

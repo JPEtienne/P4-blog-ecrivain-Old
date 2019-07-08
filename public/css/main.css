@@ -1,0 +1,46 @@
+body {
+    font-family: Verdana, Geneva, sans-serif!important; 
+}
+
+.side-menu {
+    background: #f8f9fa;
+    margin-top: 10px;
+    max-height: 500px;
+    padding: 5px;
+}
+
+.front-post {
+    background: #f8f9fa;
+    border-radius: 1%;
+    padding: 5px;
+}
+
+.media-heading a {
+    color: #2a517a!important;
+}
+
+.btn-tag {
+    border: #2a517a solid 2px!important;
+    color: #2a517a!important;
+    font-weight: bold!important;
+}
+
+.btn-tag:hover {
+    background: #2a517a!important;
+    color: white!important;
+}
+
+.pagination {
+    margin-top: 10px;
+}
+
+.page-item.active .page-link {
+    background-color: #2a517a!important;
+    border-color: #2a517a!important;
+    color: white!important;
+}
+
+.page-link {
+    color: #2a517a!important
+}
+

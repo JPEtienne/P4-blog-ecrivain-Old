@@ -20,13 +20,6 @@ Rewriterule ^disable-comment-(.*)$ manageComment.php?disable=$1
 Rewriterule ^comment-delete-(.*)$ manageComment.php?delete=$1
 Rewriterule ^suppr-tag-(.*)$ manageTag.php?delete=$1
 Rewriterule ^new-tag$ manageTag.php?add=tag
-
-
-
-
-
-
-
 Rewriterule ^logout$ logout.php
 
 
