@@ -1,6 +1,5 @@
 <?php
-
-
+include('../../functions/functions.php');
 
 class Post {
 
@@ -102,6 +101,7 @@ class Post {
     public function getPopularPosts() {
         $sql = "SELECT * FROM posts 
                 LEFT JOIN comments ON posts.slug=comments.slug 
+                WHERE comments.slug IS NOT NULL
                 GROUP BY comments.slug 
                 ORDER BY count(comments.slug) 
                 DESC LIMIT 5";

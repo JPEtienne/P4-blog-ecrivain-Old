@@ -9,12 +9,12 @@ $comment = new Comment($db);
 <div class="container">
     <h2>Posts</h2>
     <?php
-        if (!empty($_SESSION['username'])) {
+/*        if (!empty($_SESSION['username'])) {
             echo "Bonjour, {$_SESSION['username']}";
         } else {
             echo "Vous n'êtes pas connecté";
         }
-    
+*/    
     ?>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <ul class="navbar-nav">

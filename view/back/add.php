@@ -1,6 +1,5 @@
 <?php 
 include('../../functions/include_views.php'); 
-include('../../functions/functions.php');
 include('../common/header.php');
 ?>
 

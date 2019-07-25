@@ -1,24 +1,24 @@
 <?php
-include('../../functions/functions.php');
-include('../common/header.php');
 include('../../functions/include_views.php');
+include('../common/header.php');
 
 $posts = new Post($db);
 $comments = new Comment($db);
 ?>
 
 <div class="container">
-    <div class="row">
+    <div class="row row-view">
         <?php foreach($posts->getSinglePost($_GET['slug']) as $posts) { ?>
         <div class="card">
             <img src="image-<?=$posts['image'];?>" class="card-img-top">
         </div>
         <div class="card-body">
-            <h4 class="card-title"><?=$posts['title'];?></h4>
+            <h4 class="card-title"><?=ucfirst($posts['title']);?></h4>
             <p class="card-text"><?=$posts['description'];?></p>
         </div>
     </div>
     <?php } ?>
+    <div class="comment-post">
     <h4>Commentaires (<?=$comments->countComments($_GET['slug'])?>)</h4>
     <?php if(isset($_POST['btnComment'])) {
         $date = date('Y-m-d');
@@ -34,12 +34,12 @@ $comments = new Comment($db);
     } ?>
 
     <form action="" method="POST">
-        <div class="col-md-4"> 
-            <div class="form-group">
+        <div class="col-md-10 comment"> 
+            <div class="form-group comment-input">
                 <label for="name">Nom</label>
                 <input type="text" name="name" class="form-control">
             </div>
-            <div class="form-group">
+            <div class="form-group comment-input">
                 <label for="email">E-mail</label>
                 <input type="email" name="email" class="form-control">
             </div>
@@ -48,17 +48,19 @@ $comments = new Comment($db);
                 <textarea name="description" class="form-control"></textarea>
             </div>
             <div class="form-group">
-                <button type="submit" name="btnComment" class="btn btn-secondary">Envoyer</button>
+                <button type="submit" name="btnComment" class="btn btn-secondary btn-send">Envoyer</button>
             </div>
         </div>
     </form>
-
+    </div>
     <?php foreach($comments->getComment($_GET['slug']) as $comment) { ?>
      <div class="media">
+        
         <div class="media-body">
             <strong><?=$comment['name']?></strong>
-            <p><?=date('d/m/Y', strtotime($comment['created_at']));?> <a href="manageComment.php?signal=<?=$comment['id']?>&slug=<?=$comment['slug']?>"><i class="fas fa-exclamation-triangle"></i></a></p>
+            <p><?=date('d/m/Y', strtotime($comment['created_at']));?> <a title="signaler" href="manageComment.php?signal=<?=$comment['id']?>&slug=<?=$comment['slug']?>"><i class="fas fa-exclamation-triangle"></i></a></p>
             <p><?=$comment['description']?></p>
+            <hr>
         </div>
     </div>
     <?php } ?>

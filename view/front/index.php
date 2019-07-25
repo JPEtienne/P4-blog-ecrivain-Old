@@ -14,13 +14,15 @@ $tags = new Tag($db);
         <?php foreach($posts->getPost() as $post) { ?>
             <div class="media front-post">
                 <div class="media-left media-top">
-                    <img src="image-<?= $post['image'];?>" alt="9gag" class="media-object" style="width:200px;height:200px;"><br>
+                    <div class="img-size">
+                        <img src="image-<?= $post['image'];?>" alt="9gag" class="media-object" style="width:500px;">
+                    </div>
                     Ajout: <?=date('d/m/Y', strtotime($post['created_at']));?>
                     
                 </div>
                 <div class="media-body">
                     <h4 class="media-heading"><a href="post-<?=$post['slug']?>"><?=$post['title'];?></a></h4>
-                    <?= htmlspecialchars_decode($post['description']); ?>
+                    <?= htmlspecialchars_decode(strlen($post['description']) > 300 ? substr($post['description'], 0, 300).'...' : $post['description']); ?>
                 </div>
             </div>
         <?php } ?>

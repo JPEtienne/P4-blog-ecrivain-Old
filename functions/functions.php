@@ -21,3 +21,15 @@ function createSlug($string) {
 function st($string) {
     return strip_tags($string);
 }
+
+function customEcho($x, $length) {
+  if(strlen($x)<=$length)
+  {
+    echo $x;
+  }
+  else
+  {
+    $y=substr($x,0,$length) . '...';
+    echo $y;
+  }
+}
