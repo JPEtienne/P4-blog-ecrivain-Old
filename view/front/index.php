@@ -4,6 +4,7 @@ include('../common/header.php');
 
 $posts = new Post($db);
 $tags = new Tag($db);
+
 ?>
 <div class="container">
     <div class="row">
